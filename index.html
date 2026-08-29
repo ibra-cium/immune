@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>IMMUNE - Microscopic Defense</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game-canvas"></canvas>
+
+    <!-- HUD Overlay -->
+    <div id="hud" class="hud-layer hidden">
+      <div class="hud-top-left">
+        <div class="status-title">WHITE BLOOD CELL</div>
+        <div class="hp-bar-wrapper">
+          <div class="hp-bar-bg">
+            <div id="hp-bar-fill" class="hp-bar-fill"></div>
+            <div id="hp-bar-ghost" class="hp-bar-ghost"></div>
+          </div>
+          <span id="hp-text" class="hp-text">100 / 100</span>
+        </div>
+        <div class="dash-cooldown-tracker">
+          <div class="cd-label">MEMBRANE SURGE (DASH)</div>
+          <div class="cd-bar-bg"><div id="dash-cd-fill" class="cd-bar-fill"></div></div>
+        </div>
+      </div>
+
+      <div class="hud-top-right">
+        <div id="wave-badge" class="wave-badge">WAVE 1/3</div>
+        <div class="germ-count-wrapper">
+          <span class="germ-icon">🦠</span>
+          <span class="germ-label">GERMS:</span>
+          <span id="germ-count" class="germ-number">0</span>
+        </div>
+      </div>
+
+      <div id="wave-banner" class="wave-banner">
+        <div id="wave-banner-title" class="wave-banner-title">WAVE 1</div>
+        <div id="wave-banner-sub" class="wave-banner-sub">BACTERIAL OUTBREAK</div>
+      </div>
+
+      <div class="hud-bottom-center">
+        <div class="controls-hint">
+          <span class="key-tag">WASD</span> Move &nbsp;•&nbsp; 
+          <span class="key-tag">L-CLICK</span> Pseudopod Strike &nbsp;•&nbsp; 
+          <span class="key-tag">SPACE</span> Surge Dash
+        </div>
+      </div>
+    </div>
+
+    <!-- Touch Controls (Mobile) -->
+    <div id="touch-controls" class="touch-layer hidden">
+      <div id="joystick-zone" class="joystick-zone">
+        <div id="joystick-base" class="joystick-base">
+          <div id="joystick-knob" class="joystick-knob"></div>
+        </div>
+      </div>
+      <div class="touch-action-buttons">
+        <button id="touch-dash-btn" class="touch-btn dash-btn">
+          <span>SURGE</span>
+          <small>DASH</small>
+        </button>
+        <button id="touch-attack-btn" class="touch-btn attack-btn">
+          <span>STRIKE</span>
+          <small>ATTACK</small>
+        </button>
+      </div>
+    </div>
+
+    <!-- Start / Title Screen Modal -->
+    <div id="start-modal" class="modal-overlay active">
+      <div class="modal-card">
+        <div class="title-logo">
+          <span class="logo-sub">MICROSCOPIC CELL DEFENSE</span>
+          <h1 class="logo-main">IMMUNE</h1>
+          <div class="logo-glow"></div>
+        </div>
+        <p class="tagline">Foreign pathogens have invaded the bloodstream.<br>Engulf, strike, and sterilize the threat before systemic failure.</p>
+        
+        <div class="modal-instructions">
+          <div class="instruction-row">
+            <span class="inst-key">MOVE</span>
+            <span class="inst-val">WASD / Arrow Keys or Virtual Stick</span>
+          </div>
+          <div class="instruction-row">
+            <span class="inst-key">STRIKE</span>
+            <span class="inst-val">Left Mouse Button / Tap Screen</span>
+          </div>
+          <div class="instruction-row">
+            <span class="inst-key">DASH</span>
+            <span class="inst-val">Spacebar / Surge Button</span>
+          </div>
+        </div>
+
+        <button id="btn-start" class="btn-action primary-pulse">
+          <span>INITIALIZE DEFENSE</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="game-over-modal" class="modal-overlay hidden">
+      <div class="modal-card danger-card">
+        <div class="skull-icon">☣️</div>
+        <h2 class="modal-title alert-text">IMMUNE SYSTEM FAILED</h2>
+        <p class="modal-desc">Cellular integrity compromised. Pathogens overwhelmed the bloodstream host.</p>
+        <div id="game-over-stats" class="stats-preview"></div>
+        <button id="btn-restart" class="btn-action danger-btn">
+          <span>RETRY SYSTEM DEFENSE</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Victory Modal -->
+    <div id="victory-modal" class="modal-overlay hidden">
+      <div class="modal-card victory-card">
+        <div class="cell-shield-icon">🛡️</div>
+        <h2 class="modal-title victory-text">BODY CLEARED</h2>
+        <p class="modal-desc">All pathogenic organisms neutralized. Blood vessel sterilization complete!</p>
+        <div id="victory-stats" class="stats-preview"></div>
+        <button id="btn-play-again" class="btn-action victory-btn">
+          <span>PLAY AGAIN</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
