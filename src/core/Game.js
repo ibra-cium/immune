@@ -85,6 +85,7 @@ export class Game {
     this.levelSelectModal = document.getElementById('level-select-modal');
 
     document.getElementById('btn-start')?.addEventListener('click', () => {
+      this.tryRequestFullscreen();
       this.startModal?.classList.remove('active');
       this.startModal?.classList.add('hidden');
       this.startGame(1);
@@ -114,6 +115,7 @@ export class Game {
     });
 
     document.getElementById('btn-play-again')?.addEventListener('click', () => {
+      this.tryRequestFullscreen();
       this.victoryModal?.classList.add('hidden');
       this.victoryModal?.classList.remove('active');
       this.startGame(1);
@@ -144,11 +146,26 @@ export class Game {
     this.buildLevelSelectGrid();
   }
 
+  tryRequestFullscreen() {
+    if (!document.fullscreenElement) {
+      const el = document.documentElement;
+      if (el.requestFullscreen) {
+        el.requestFullscreen().catch(() => {});
+      } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen();
+      }
+    }
+  }
+
   toggleFullscreen() {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(() => {});
+      this.tryRequestFullscreen();
     } else {
-      document.exitFullscreen().catch(() => {});
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(() => {});
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
     }
   }
 
@@ -181,6 +198,7 @@ export class Game {
       `;
 
       btn.addEventListener('click', () => {
+        this.tryRequestFullscreen();
         this.hideLevelSelectModal();
         this.startModal?.classList.remove('active');
         this.startModal?.classList.add('hidden');

@@ -77,6 +77,7 @@ Append one row per ticket. Newest at the bottom.
 | — | 2026-08-30 | Done | Overhauled mobile HUD & touch controls to studio-grade bioluminescent minimalism: unified Bio-Canopy canopy, breathing ECG host horizon, frosted glass action orbs with clean glowing vector glyphs, and ethereal floating joystick. |
 | — | 2026-08-30 | Done | Added animated mobile orientation guard overlay to prompt players on phones to rotate their device to landscape for widescreen battlespace. |
 | — | 2026-08-30 | Done | Fixed browser viewport scroll and overflow: locked container with 100dvh & overscroll-behavior none, made modal cards auto-scaling with fluid clamp typography, and added full-screen toggle (F key & HUD button). |
+| — | 2026-08-30 | Done | Adapted title modal to 2-column horizontal layout in mobile landscape (zero scroll), added manifest.json & web app metadata, and wired auto-fullscreen trigger on game start and level selection taps. |
 
 Status values: `Done`, `Partial`, `Blocked`.
 

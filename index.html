@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f0305">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>IMMUNE - Microscopic Defense</title>
-  <link rel="stylesheet" href="style.css?v=20260830_14">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css?v=20260830_15">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -220,40 +225,45 @@
 
     <!-- Start / Title Screen Modal -->
     <div id="start-modal" class="modal-overlay active">
-      <div class="modal-card">
-        <div class="title-logo">
-          <span class="logo-sub">MICROSCOPIC CELL DEFENSE</span>
-          <h1 class="logo-main">IMMUNE</h1>
-          <div class="logo-glow"></div>
-        </div>
-        <p class="tagline">Foreign pathogens have invaded the bloodstream.<br>Engulf, strike, and sterilize the threat before systemic failure.</p>
-        
-        <div class="modal-instructions">
-          <div class="instruction-row">
-            <span class="inst-key">MOVE</span>
-            <span class="inst-val">WASD / Arrow Keys or Virtual Stick</span>
+      <div class="modal-card start-modal-card">
+        <div class="modal-body-layout">
+          <div class="modal-col-left">
+            <div class="title-logo">
+              <span class="logo-sub">MICROSCOPIC CELL DEFENSE</span>
+              <h1 class="logo-main">IMMUNE</h1>
+              <div class="logo-glow"></div>
+            </div>
+            <p class="tagline">Foreign pathogens have invaded the bloodstream.<br>Engulf, strike, and sterilize the threat before systemic failure.</p>
+            <div class="start-btn-group">
+              <button id="btn-start" class="btn-action primary-pulse">
+                <span>INITIALIZE DEFENSE</span>
+              </button>
+              <button id="btn-start-level-select" class="btn-action secondary-btn">
+                <span>SELECT LEVEL</span>
+              </button>
+            </div>
           </div>
-          <div class="instruction-row">
-            <span class="inst-key">STRIKE</span>
-            <span class="inst-val">Left Mouse Button / Tap Screen</span>
-          </div>
-          <div class="instruction-row">
-            <span class="inst-key">DASH</span>
-            <span class="inst-val">Spacebar / Surge Button</span>
-          </div>
-          <div class="instruction-row">
-            <span class="inst-key">VENT</span>
-            <span class="inst-val">Q Key / Vent Button (Min 3 Mass)</span>
-          </div>
-        </div>
 
-        <div class="start-btn-group">
-          <button id="btn-start" class="btn-action primary-pulse">
-            <span>INITIALIZE DEFENSE</span>
-          </button>
-          <button id="btn-start-level-select" class="btn-action secondary-btn">
-            <span>SELECT LEVEL</span>
-          </button>
+          <div class="modal-col-right">
+            <div class="modal-instructions">
+              <div class="instruction-row">
+                <span class="inst-key">MOVE</span>
+                <span class="inst-val">WASD / Virtual Stick</span>
+              </div>
+              <div class="instruction-row">
+                <span class="inst-key">STRIKE</span>
+                <span class="inst-val">Left Click / Strike Button</span>
+              </div>
+              <div class="instruction-row">
+                <span class="inst-key">SURGE</span>
+                <span class="inst-val">Spacebar / Surge Button</span>
+              </div>
+              <div class="instruction-row">
+                <span class="inst-key">VENT</span>
+                <span class="inst-val">Q Key / Vent Button</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
