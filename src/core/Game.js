@@ -119,6 +119,14 @@ export class Game {
       this.startGame(1);
     });
 
+    document.getElementById('btn-fullscreen')?.addEventListener('click', () => {
+      this.toggleFullscreen();
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      this.resizeCanvas();
+    });
+
     window.addEventListener('keydown', (e) => {
       if (e.key === 'l' || e.key === 'L') {
         if (this.levelSelectModal && this.levelSelectModal.classList.contains('active')) {
@@ -126,12 +134,22 @@ export class Game {
         } else {
           this.showLevelSelectModal();
         }
+      } else if (e.key === 'f' || e.key === 'F') {
+        this.toggleFullscreen();
       } else if (e.key === 'Escape') {
         this.hideLevelSelectModal();
       }
     });
 
     this.buildLevelSelectGrid();
+  }
+
+  toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen().catch(() => {});
+    }
   }
 
   buildLevelSelectGrid() {
