@@ -21,6 +21,14 @@
   padding: 0;
   user-select: none;
   -webkit-user-select: none;
+}
+
+#game-container,
+#game-canvas,
+.touch-layer,
+.joystick-zone,
+.touch-action-cluster,
+.touch-btn {
   touch-action: none;
 }
 
@@ -1107,6 +1115,10 @@ html, body {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  padding: 16px;
 }
 
 .modal-overlay.active {
@@ -1134,6 +1146,33 @@ html, body {
   flex-direction: column;
   align-items: center;
   animation: modal-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  overscroll-behavior-y: contain;
+}
+
+.modal-card::-webkit-scrollbar,
+.level-select-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-card::-webkit-scrollbar-track,
+.level-select-card::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 999px;
+}
+
+.modal-card::-webkit-scrollbar-thumb,
+.level-select-card::-webkit-scrollbar-thumb {
+  background: rgba(255, 120, 150, 0.35);
+  border-radius: 999px;
+}
+
+.modal-card::-webkit-scrollbar-thumb:hover,
+.level-select-card::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 120, 150, 0.6);
 }
 
 @keyframes modal-enter {
@@ -1244,6 +1283,10 @@ html, body {
   opacity: 0;
   pointer-events: none;
   transition: opacity 2s ease-in-out;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  padding: 16px;
 }
 
 .host-death-overlay.active {
@@ -1267,6 +1310,11 @@ html, body {
   padding: 32px 24px;
   opacity: 0;
   transform: translateY(10px);
+  max-height: 90vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  overscroll-behavior-y: contain;
 }
 
 .host-death-overlay.active .host-death-card {
@@ -1544,6 +1592,47 @@ html, body {
     padding: 24px 18px;
     max-height: 90vh;
     overflow-y: auto;
+    width: 95vw;
+  }
+
+  .level-select-card {
+    padding: 18px 14px;
+    width: 95vw;
+    max-height: 86vh;
+    border-radius: 20px;
+  }
+
+  .level-select-title {
+    font-size: 20px;
+  }
+
+  .act-header-tag {
+    font-size: 10px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+
+  .level-grid {
+    grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+    gap: 8px;
+  }
+
+  .level-btn {
+    padding: 10px 8px;
+    border-radius: 10px;
+    gap: 4px;
+  }
+
+  .level-num {
+    font-size: 12px;
+  }
+
+  .level-name {
+    font-size: 11px;
+  }
+
+  .level-spawns-summary {
+    font-size: 9px;
   }
 
   .logo-main {
@@ -1645,6 +1734,9 @@ html, body {
   max-height: 88vh;
   overflow-y: auto;
   padding: 28px 32px;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
 }
 
 .modal-header-row {
@@ -1685,6 +1777,7 @@ html, body {
   font-size: 16px;
   cursor: pointer;
   transition: all 0.2s ease;
+  touch-action: manipulation;
 }
 
 .btn-close:hover {
@@ -1714,6 +1807,7 @@ html, body {
   gap: 12px;
   width: 100%;
   margin-bottom: 8px;
+  touch-action: pan-y;
 }
 
 .level-btn {
@@ -1730,6 +1824,8 @@ html, body {
   text-align: left;
   position: relative;
   overflow: hidden;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .level-btn::before {
