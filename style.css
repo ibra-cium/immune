@@ -1490,16 +1490,19 @@ html, body {
 }
 
 /* Responsive adjustments for Phone & Tablet (Zero-Overlap Layout) */
-@media (max-width: 860px), (max-height: 520px) {
+/* Responsive adjustments for Landscape Phone & Tablet (Minimalist Bio-HUD) */
+@media (max-width: 950px), (max-height: 540px) {
   .hud-layer {
-    padding: max(10px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+    padding: max(8px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
   }
 
   .hud-top-bar {
+    position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
     width: 100%;
-    gap: 6px;
     pointer-events: none;
   }
 
@@ -1508,18 +1511,16 @@ html, body {
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
-    gap: 8px;
     pointer-events: none;
   }
 
   .hud-top-left {
-    width: auto;
-    flex: 1;
-    max-width: 58%;
-    padding: 8px 12px;
-    gap: 4px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, rgba(22, 7, 14, 0.78) 0%, rgba(10, 3, 7, 0.88) 100%);
+    width: 210px;
+    max-width: 32vw;
+    padding: 6px 10px;
+    gap: 3px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(22, 7, 14, 0.75) 0%, rgba(10, 3, 7, 0.85) 100%);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1536,20 +1537,20 @@ html, body {
   }
 
   .mass-label, .cd-label {
-    font-size: 7px;
+    font-size: 6.5px;
     letter-spacing: 0.5px;
   }
 
   .mass-text, .cd-status {
-    font-size: 7.5px;
+    font-size: 7px;
   }
 
   .mass-bar-track {
-    height: 6px;
+    height: 5px;
   }
 
   .hp-bar-bg {
-    height: 8px;
+    height: 7px;
   }
 
   .cd-bar-bg {
@@ -1564,58 +1565,63 @@ html, body {
     flex-direction: column;
     align-items: flex-end;
     gap: 4px;
-    max-width: 40%;
+    max-width: 30vw;
     flex-shrink: 0;
     pointer-events: auto;
   }
 
   .wave-badge, .germ-count-wrapper {
-    padding: 5px 10px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, rgba(22, 7, 14, 0.78) 0%, rgba(10, 3, 7, 0.88) 100%);
+    padding: 4px 8px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(22, 7, 14, 0.75) 0%, rgba(10, 3, 7, 0.85) 100%);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
 
   .wave-badge {
-    font-size: 9.5px;
+    font-size: 9px;
     gap: 4px;
   }
 
   .germ-count-wrapper {
-    gap: 5px;
+    gap: 4px;
   }
 
   .germ-icon {
-    font-size: 11px;
-  }
-
-  .germ-number {
     font-size: 10px;
   }
 
-  /* Host Vitality sits neatly across full width below Row 1 */
+  .germ-number {
+    font-size: 9.5px;
+  }
+
+  /* Host Vitality sits cleanly docked at Top Center */
   .host-vitality-container {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    width: 100%;
-    max-width: 100%;
+    position: absolute;
+    top: max(8px, env(safe-area-inset-top));
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    max-width: 32vw;
     margin: 0;
-    padding: 6px 12px;
-    border-radius: 12px;
-    gap: 3px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    gap: 2px;
+    background: linear-gradient(135deg, rgba(22, 7, 14, 0.75) 0%, rgba(10, 3, 7, 0.85) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    z-index: 12;
     pointer-events: auto;
   }
 
   .host-label {
-    font-size: 7.5px;
-    letter-spacing: 1.5px;
+    font-size: 7px;
+    letter-spacing: 1.2px;
   }
 
   .host-pct-text {
-    font-size: 8.5px;
+    font-size: 8px;
   }
 
   .host-bar-bg {
@@ -2000,7 +2006,7 @@ html, body {
 }
 
 /* ==========================================================================
-   ORIENTATION LOCK GUARD (MOBILE PORTRAIT ENFORCER)
+   ORIENTATION LOCK GUARD (MOBILE LANDSCAPE ENFORCER)
    ========================================================================== */
 .orientation-guard {
   display: none;
@@ -2021,11 +2027,9 @@ html, body {
   display: flex !important;
 }
 
-/* Force portrait on mobile/tablet landscape orientations and short viewport heights */
-@media screen and (orientation: landscape) and (max-height: 620px) and (pointer: coarse),
-       screen and (orientation: landscape) and (max-width: 1024px) and (pointer: coarse),
-       screen and (orientation: landscape) and (max-height: 520px),
-       screen and (orientation: landscape) and (max-width: 960px) and (hover: none) {
+/* Force landscape: Show guard when in portrait mode on mobile/touch devices */
+@media screen and (orientation: portrait) and (max-width: 850px) and (pointer: coarse),
+       screen and (orientation: portrait) and (max-width: 850px) and (hover: none) {
   .orientation-guard {
     display: flex !important;
   }
@@ -2062,9 +2066,9 @@ html, body {
 }
 
 @keyframes rotate-phone {
-  0%, 20% { transform: rotate(90deg); }
-  50%, 80% { transform: rotate(0deg); }
-  100% { transform: rotate(90deg); }
+  0%, 20% { transform: rotate(0deg); }
+  50%, 80% { transform: rotate(-90deg); }
+  100% { transform: rotate(0deg); }
 }
 
 .phone-svg {

@@ -5,11 +5,11 @@ function setupOrientationGuard() {
   if (!guard) return;
 
   const updateOrientation = () => {
-    const isLandscape = window.innerWidth > window.innerHeight;
+    const isPortrait = window.innerHeight >= window.innerWidth;
     const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || window.innerWidth <= 1024;
-    const isShortLandscape = isLandscape && (window.innerHeight <= 650 || window.innerWidth <= 1024);
+    const isMobilePortrait = isPortrait && isTouch && window.innerWidth <= 850;
 
-    if (isTouch && isShortLandscape) {
+    if (isMobilePortrait) {
       guard.classList.add('active');
     } else {
       guard.classList.remove('active');
