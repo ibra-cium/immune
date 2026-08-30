@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>IMMUNE - Microscopic Defense</title>
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -15,68 +15,72 @@
 
     <!-- HUD Overlay -->
     <div id="hud" class="hud-layer hidden">
-      <!-- Player Status Gauge (Top-Left) -->
-      <div class="hud-top-left">
-        <div class="hud-panel-header">
-          <div class="status-core-dot"></div>
-          <span class="status-title">DEFENSE CELL</span>
-          <span id="hp-text" class="hp-text">100 / 100</span>
-        </div>
-        
-        <div class="hp-bar-wrapper">
-          <div class="hp-bar-bg">
-            <div id="hp-bar-fill" class="hp-bar-fill"></div>
-            <div id="hp-bar-ghost" class="hp-bar-ghost"></div>
+      <div class="hud-top-bar">
+        <div class="hud-top-row">
+          <!-- Player Status Gauge (Top-Left) -->
+          <div class="hud-top-left">
+            <div class="hud-panel-header">
+              <div class="status-core-dot"></div>
+              <span class="status-title">DEFENSE CELL</span>
+              <span id="hp-text" class="hp-text">100 / 100</span>
+            </div>
+            
+            <div class="hp-bar-wrapper">
+              <div class="hp-bar-bg">
+                <div id="hp-bar-fill" class="hp-bar-fill"></div>
+                <div id="hp-bar-ghost" class="hp-bar-ghost"></div>
+              </div>
+            </div>
+
+            <div class="mass-tracker">
+              <div class="mass-header">
+                <span id="mass-label" class="mass-label">MASS ACCUMULATION</span>
+                <span id="mass-text" class="mass-text">0 / 30</span>
+              </div>
+              <div class="mass-bar-track">
+                <div id="mass-segments-container" class="mass-segments-container"></div>
+                <div id="mass-cooldown-overlay" class="mass-cooldown-overlay"></div>
+              </div>
+            </div>
+
+            <div class="dash-cooldown-tracker">
+              <div class="cd-header">
+                <span class="cd-label">MEMBRANE SURGE</span>
+                <span id="dash-cd-text" class="cd-status">READY</span>
+              </div>
+              <div class="cd-bar-bg">
+                <div id="dash-cd-fill" class="cd-bar-fill"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Threat Radar & Level Selector (Top-Right) -->
+          <div class="hud-top-right">
+            <button id="wave-badge" class="wave-badge wave-badge-btn" title="Click or press L to Select Level">
+              <span class="badge-icon">🧬</span>
+              <span class="badge-text">LEVEL 1/12</span>
+              <span class="badge-arrow">▾</span>
+            </button>
+            <div class="germ-count-wrapper">
+              <span class="germ-icon">🦠</span>
+              <span id="germ-count" class="germ-number">GERMS 0/0</span>
+            </div>
           </div>
         </div>
 
-        <div class="mass-tracker">
-          <div class="mass-header">
-            <span id="mass-label" class="mass-label">MASS ACCUMULATION</span>
-            <span id="mass-text" class="mass-text">0 / 30</span>
+        <!-- Biometric Host Vitality Monitor (Centered Row) -->
+        <div id="host-vitality-container" class="hud-top-center host-vitality-container host-bar-hidden">
+          <div class="host-header-row">
+            <div class="host-pulse-indicator"></div>
+            <span class="host-label">HOST SYSTEM INTEGRITY</span>
+            <span id="host-pct-text" class="host-pct-text">100%</span>
           </div>
-          <div class="mass-bar-track">
-            <div id="mass-segments-container" class="mass-segments-container"></div>
-            <div id="mass-cooldown-overlay" class="mass-cooldown-overlay"></div>
+          <div class="host-bar-wrapper">
+            <div class="host-bar-bg">
+              <div id="host-bar-fill" class="host-bar-fill"></div>
+              <div class="host-bar-scanline"></div>
+            </div>
           </div>
-        </div>
-
-        <div class="dash-cooldown-tracker">
-          <div class="cd-header">
-            <span class="cd-label">MEMBRANE SURGE</span>
-            <span id="dash-cd-text" class="cd-status">READY</span>
-          </div>
-          <div class="cd-bar-bg">
-            <div id="dash-cd-fill" class="cd-bar-fill"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Biometric Host Vitality Monitor (Top-Center) -->
-      <div id="host-vitality-container" class="hud-top-center host-vitality-container host-bar-hidden">
-        <div class="host-header-row">
-          <div class="host-pulse-indicator"></div>
-          <span class="host-label">HOST SYSTEM INTEGRITY</span>
-          <span id="host-pct-text" class="host-pct-text">100%</span>
-        </div>
-        <div class="host-bar-wrapper">
-          <div class="host-bar-bg">
-            <div id="host-bar-fill" class="host-bar-fill"></div>
-            <div class="host-bar-scanline"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Threat Radar & Level Selector (Top-Right) -->
-      <div class="hud-top-right">
-        <button id="wave-badge" class="wave-badge wave-badge-btn" title="Click or press L to Select Level">
-          <span class="badge-icon">🧬</span>
-          <span class="badge-text">LEVEL 1/12</span>
-          <span class="badge-arrow">▾</span>
-        </button>
-        <div class="germ-count-wrapper">
-          <span class="germ-icon">🦠</span>
-          <span id="germ-count" class="germ-number">GERMS 0/0</span>
         </div>
       </div>
 
@@ -275,6 +279,6 @@
     </div>
   </div>
 
-  <script type="module" src="src/main.js?v=3"></script>
+  <script type="module" src="src/main.js?v=5"></script>
 </body>
 </html>

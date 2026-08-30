@@ -72,6 +72,19 @@ html, body {
   pointer-events: none;
 }
 
+.hud-top-bar {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.hud-top-row {
+  display: contents;
+}
+
 .hud-top-left {
   display: flex;
   flex-direction: column;
@@ -443,9 +456,7 @@ html, body {
 
 /* Threat Radar & Level Selector (Top-Right) */
 .hud-top-right {
-  position: absolute;
-  top: max(20px, env(safe-area-inset-top));
-  right: max(24px, env(safe-area-inset-right));
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -1399,107 +1410,176 @@ html, body {
   gap: 20px;
 }
 
-/* Responsive adjustments for Phone & Tablet */
-@media (max-width: 900px), (max-height: 520px) {
+/* Responsive adjustments for Phone & Tablet (Zero-Overlap Layout) */
+@media (max-width: 860px), (max-height: 520px) {
   .hud-layer {
-    padding: max(12px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
+    padding: max(10px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
   }
-  .hud-top-left {
-    width: 220px;
-    padding: 10px 12px;
+
+  .hud-top-bar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     gap: 6px;
-    border-radius: 14px;
+    pointer-events: none;
   }
+
+  .hud-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    gap: 8px;
+    pointer-events: none;
+  }
+
+  .hud-top-left {
+    width: auto;
+    flex: 1;
+    max-width: 58%;
+    padding: 7px 10px;
+    gap: 4px;
+    border-radius: 12px;
+    pointer-events: auto;
+  }
+
   .status-title {
-    font-size: 9.5px;
-    letter-spacing: 1.5px;
-  }
-  .hp-text {
-    font-size: 9.5px;
-  }
-  .mass-label, .cd-label {
     font-size: 8px;
     letter-spacing: 1px;
   }
-  .mass-text, .cd-status {
+
+  .hp-text {
     font-size: 8.5px;
-  }
-  .mass-bar-track {
-    height: 7px;
-  }
-  .hp-bar-bg {
-    height: 10px;
   }
 
-  .host-vitality-container {
-    top: max(12px, env(safe-area-inset-top));
-    width: 240px;
-    max-width: 42vw;
-    padding: 6px 12px;
-    gap: 4px;
-    border-radius: 12px;
+  .mass-label, .cd-label {
+    font-size: 7px;
+    letter-spacing: 0.5px;
   }
-  .host-label {
-    font-size: 8.5px;
-    letter-spacing: 2px;
+
+  .mass-text, .cd-status {
+    font-size: 7.5px;
   }
-  .host-pct-text {
-    font-size: 9.5px;
+
+  .mass-bar-track {
+    height: 6px;
+  }
+
+  .hp-bar-bg {
+    height: 8px;
+  }
+
+  .cd-bar-bg {
+    height: 3px;
   }
 
   .hud-top-right {
-    top: max(12px, env(safe-area-inset-top));
-    right: max(14px, env(safe-area-inset-right));
-    gap: 6px;
+    position: relative;
+    top: auto;
+    right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    max-width: 40%;
+    flex-shrink: 0;
+    pointer-events: auto;
   }
+
   .wave-badge, .germ-count-wrapper {
-    padding: 6px 10px;
-    border-radius: 10px;
+    padding: 4px 8px;
+    border-radius: 8px;
   }
+
   .wave-badge {
-    font-size: 10.5px;
+    font-size: 9.5px;
+    gap: 4px;
   }
+
+  .germ-count-wrapper {
+    gap: 5px;
+  }
+
+  .germ-icon {
+    font-size: 11px;
+  }
+
   .germ-number {
-    font-size: 11.5px;
+    font-size: 10px;
+  }
+
+  /* Host Vitality sits neatly across full width below Row 1 */
+  .host-vitality-container {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 5px 10px;
+    border-radius: 10px;
+    gap: 3px;
+    pointer-events: auto;
+  }
+
+  .host-label {
+    font-size: 7.5px;
+    letter-spacing: 1.5px;
+  }
+
+  .host-pct-text {
+    font-size: 8.5px;
+  }
+
+  .host-bar-bg {
+    height: 4px;
   }
 
   .controls-hint {
     display: none !important;
   }
+
   .modal-card {
-    padding: 26px 20px;
+    padding: 24px 18px;
     max-height: 90vh;
     overflow-y: auto;
   }
+
   .logo-main {
-    font-size: 42px;
-    letter-spacing: 8px;
+    font-size: 38px;
+    letter-spacing: 6px;
   }
+
   .tagline {
-    font-size: 12.5px;
-    margin-bottom: 18px;
+    font-size: 12px;
+    margin-bottom: 16px;
   }
+
   .touch-action-cluster {
     bottom: max(16px, env(safe-area-inset-bottom));
     right: max(16px, env(safe-area-inset-right));
-    width: 190px;
-    height: 190px;
+    width: 180px;
+    height: 180px;
   }
+
   .attack-btn {
-    width: 76px;
-    height: 76px;
+    width: 74px;
+    height: 74px;
   }
+
   .dash-btn {
-    bottom: 84px;
+    bottom: 80px;
     right: 4px;
-    width: 58px;
-    height: 58px;
+    width: 56px;
+    height: 56px;
   }
+
   .vent-btn {
-    bottom: 42px;
-    right: 92px;
-    width: 58px;
-    height: 58px;
+    bottom: 40px;
+    right: 88px;
+    width: 56px;
+    height: 56px;
   }
 }
 
