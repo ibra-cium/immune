@@ -6,7 +6,7 @@ DOM HUD elements, status bars, notification banners, and modal overlays.
 
 | File | What it does |
 |------|--------------|
-| `Hud.js` | Manages bio-diegetic DOM HUD overlays: cell HP, segmented mass vial, biometric host vitality ECG monitor, dash status, and radial touch cooldown sweeps. |
+| `Hud.js` | Manages minimal Bio-Canopy HUD telemetry: frosted cell vitality capsule, biometric host ECG horizon line, micro mass & surge meters, and radial touch cooldown sweeps. |
 | `Screens.js` | Manages level intro cards, level complete/failure sequence banners, level selector grid, and the host death screen with restart actions. |
 
 ## Notes

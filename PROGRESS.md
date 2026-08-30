@@ -74,6 +74,8 @@ Append one row per ticket. Newest at the bottom.
 | — | 2026-08-30 | Done | Added off-screen HUD enemy indicator arrows to Game.js: color-coded by enemy type (green bacteria, purple virus, amber parasite), glowing cyan for weakened engulfable prey, and pulsating breathing animation. |
 | — | 2026-08-30 | Done | Overhauled UI and controls to AAA quality: bio-diegetic frosted HUD, biometric host ECG monitor, segmented mass vial, dynamic floating joystick (left 55% touch zone), ergonomic thumb arc action cluster, radial cooldown rings, and smart auto-aim for mobile strikes. |
 | — | 2026-08-30 | Done | Removed orientation lock to support both portrait and landscape; polished horizontal landscape HUD to ultra-minimal non-overlapping bio-capsule with docked top-center host monitor. |
+| — | 2026-08-30 | Done | Overhauled mobile HUD & touch controls to studio-grade bioluminescent minimalism: unified Bio-Canopy canopy, breathing ECG host horizon, frosted glass action orbs with clean glowing vector glyphs, and ethereal floating joystick. |
+| — | 2026-08-30 | Done | Added animated mobile orientation guard overlay to prompt players on phones to rotate their device to landscape for widescreen battlespace. |
 
 Status values: `Done`, `Partial`, `Blocked`.
 

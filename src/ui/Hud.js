@@ -117,10 +117,10 @@ export class Hud {
       this.hostPctText.textContent = '100%';
     }
     if (this.massText) {
-      this.massText.textContent = `0 / ${BALANCE.player.mass.max}`;
+      this.massText.textContent = `0/${BALANCE.player.mass.max}`;
     }
     if (this.massLabel) {
-      this.massLabel.textContent = 'MASS ACCUMULATION';
+      this.massLabel.textContent = 'MASS';
     }
     if (this.massCooldownOverlay) {
       this.massCooldownOverlay.style.width = '0%';
@@ -187,7 +187,7 @@ export class Hud {
     const currentMass = player.mass || 0;
     const maxMass = BALANCE.player.mass.max;
     if (this.massText) {
-      this.massText.textContent = `${currentMass} / ${maxMass}`;
+      this.massText.textContent = `${currentMass}/${maxMass}`;
     }
     if (this.massTracker) {
       this.massTracker.classList.toggle('maxed', currentMass >= maxMass);
@@ -201,7 +201,7 @@ export class Hud {
         this.massCooldownOverlay.style.width = `${cdPct}%`;
       }
       if (this.massLabel) {
-        this.massLabel.textContent = `VENT RECHARGE (${player.ventTimer.toFixed(1)}s)`;
+        this.massLabel.textContent = `VENT (${player.ventTimer.toFixed(1)}s)`;
       }
       if (this.touchVentRing) {
         const offset = (player.ventTimer / player.ventCooldown) * this.ringCircumference;
@@ -212,7 +212,7 @@ export class Hud {
         this.massCooldownOverlay.style.width = '0%';
       }
       if (this.massLabel) {
-        this.massLabel.textContent = 'MASS ACCUMULATION';
+        this.massLabel.textContent = 'MASS';
       }
       if (this.touchVentRing) {
         this.touchVentRing.style.strokeDashoffset = '0';
@@ -255,9 +255,9 @@ export class Hud {
       const currentId = levelRunner.currentLevel ? levelRunner.currentLevel.id : 1;
       const badgeTextEl = this.waveBadge.querySelector('.badge-text');
       if (badgeTextEl) {
-        badgeTextEl.textContent = `LEVEL ${currentId}/${LEVELS.length}`;
+        badgeTextEl.textContent = `LVL ${currentId}/${LEVELS.length}`;
       } else {
-        this.waveBadge.textContent = `LEVEL ${currentId}/${LEVELS.length}`;
+        this.waveBadge.textContent = `LVL ${currentId}/${LEVELS.length}`;
       }
     }
 

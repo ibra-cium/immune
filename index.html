@@ -16,89 +16,86 @@
   <div id="game-container">
     <canvas id="game-canvas"></canvas>
 
-    <!-- HUD Overlay -->
+    <!-- HUD Overlay (Minimalist Ultra-Slim Bio-Horizon) -->
     <div id="hud" class="hud-layer hidden">
-      <div class="hud-top-bar">
-        <div class="hud-top-row">
-          <!-- Player Status Gauge (Top-Left) -->
-          <div class="hud-top-left">
-            <div class="hud-panel-header">
-              <div class="status-core-dot"></div>
-              <span class="status-title">DEFENSE CELL</span>
-              <span id="hp-text" class="hp-text">100 / 100</span>
-            </div>
-            
+      <header class="hud-top-bar">
+        <!-- 1. Left: Single-Row Player Vitality & Biomass Capsule -->
+        <div class="hud-bio-cell">
+          <div class="bio-cell-hp-group">
+            <div class="status-core-dot"></div>
             <div class="hp-bar-wrapper">
               <div class="hp-bar-bg">
                 <div id="hp-bar-fill" class="hp-bar-fill"></div>
                 <div id="hp-bar-ghost" class="hp-bar-ghost"></div>
               </div>
             </div>
+            <span id="hp-text" class="hp-text">100</span>
+          </div>
 
+          <div class="bio-divider"></div>
+
+          <div class="bio-cell-aux-group">
+            <!-- Inline Mass Counter -->
             <div class="mass-tracker">
-              <div class="mass-header">
-                <span id="mass-label" class="mass-label">MASS ACCUMULATION</span>
-                <span id="mass-text" class="mass-text">0 / 30</span>
-              </div>
+              <div class="mass-micro-icon">●</div>
+              <span id="mass-text" class="mass-text">0/30</span>
               <div class="mass-bar-track">
                 <div id="mass-segments-container" class="mass-segments-container"></div>
                 <div id="mass-cooldown-overlay" class="mass-cooldown-overlay"></div>
               </div>
+              <span id="mass-label" class="mass-label sr-only">MASS</span>
             </div>
 
+            <!-- Inline Surge CD -->
             <div class="dash-cooldown-tracker">
-              <div class="cd-header">
-                <span class="cd-label">MEMBRANE SURGE</span>
-                <span id="dash-cd-text" class="cd-status">READY</span>
-              </div>
+              <span class="surge-icon">⚡</span>
               <div class="cd-bar-bg">
                 <div id="dash-cd-fill" class="cd-bar-fill"></div>
               </div>
-            </div>
-          </div>
-
-          <!-- Threat Radar & Level Selector (Top-Right) -->
-          <div class="hud-top-right">
-            <button id="wave-badge" class="wave-badge wave-badge-btn" title="Click or press L to Select Level">
-              <svg class="badge-svg-icon dna-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-                <path d="M4 4c4 4 12 4 16 0M4 20c4-4 12-4 16 0M4 12h16M7 7l10 10M7 17L17 7"/>
-              </svg>
-              <span class="badge-text">LEVEL 1/12</span>
-              <span class="badge-arrow">▾</span>
-            </button>
-            <div class="germ-count-wrapper">
-              <svg class="badge-svg-icon germ-svg-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <circle cx="12" cy="12" r="5" fill="rgba(255, 51, 85, 0.25)"/>
-                <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.2 2.2M16.2 16.2l2.2 2.2M5.6 18.4l2.2-2.2M16.2 7.8l2.2-2.2"/>
-              </svg>
-              <span id="germ-count" class="germ-number">GERMS 0/0</span>
+              <span id="dash-cd-text" class="cd-status">READY</span>
             </div>
           </div>
         </div>
 
-        <!-- Biometric Host Vitality Monitor (Centered Row) -->
+        <!-- 2. Center: Non-Overlapping Host Vitality Horizon -->
         <div id="host-vitality-container" class="hud-top-center host-vitality-container host-bar-hidden">
-          <div class="host-header-row">
-            <div class="host-pulse-indicator"></div>
-            <span class="host-label">HOST SYSTEM INTEGRITY</span>
-            <span id="host-pct-text" class="host-pct-text">100%</span>
-          </div>
+          <div class="host-pulse-indicator"></div>
+          <span class="host-label">HOST</span>
           <div class="host-bar-wrapper">
             <div class="host-bar-bg">
               <div id="host-bar-fill" class="host-bar-fill"></div>
               <div class="host-bar-scanline"></div>
             </div>
           </div>
+          <span id="host-pct-text" class="host-pct-text">100%</span>
         </div>
-      </div>
+
+        <!-- 3. Right: Threat & Sector Pills -->
+        <div class="hud-bio-sector">
+          <button id="wave-badge" class="wave-badge wave-badge-btn" title="Select Level (L)">
+            <svg class="badge-svg-icon dna-icon" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+              <path d="M4 4c4 4 12 4 16 0M4 20c4-4 12-4 16 0M4 12h16M7 7l10 10M7 17L17 7"/>
+            </svg>
+            <span class="badge-text">LVL 1/12</span>
+            <span class="badge-arrow">▾</span>
+          </button>
+          <div class="germ-count-wrapper">
+            <svg class="badge-svg-icon germ-svg-icon" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="5" fill="rgba(255, 51, 85, 0.25)"/>
+              <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.2 2.2M16.2 16.2l2.2 2.2M5.6 18.4l2.2-2.2M16.2 7.8l2.2-2.2"/>
+            </svg>
+            <span id="germ-count" class="germ-number">0/0</span>
+          </div>
+        </div>
+      </header>
 
       <!-- Desktop Controls Hint (Bottom-Center) -->
       <div class="hud-bottom-center">
         <div class="controls-hint">
           <span class="key-tag">WASD</span> Move &nbsp;•&nbsp; 
           <span class="key-tag">L-CLICK</span> Strike &nbsp;•&nbsp; 
-          <span class="key-tag">SPACE</span> Surge Dash &nbsp;•&nbsp; 
-          <span class="key-tag">Q</span> Vent Burst &nbsp;•&nbsp;
+          <span class="key-tag">SPACE</span> Surge &nbsp;•&nbsp; 
+          <span class="key-tag">Q</span> Vent &nbsp;•&nbsp;
           <span class="key-tag">L</span> Levels
         </div>
       </div>
@@ -163,7 +160,7 @@
               <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M4.9 19.1l2.2-2.2M16.9 7.1l2.2-2.2"/>
             </svg>
             <span class="btn-title">VENT</span>
-            <small id="touch-vent-sub" class="btn-sub">0/3</small>
+            <span id="touch-vent-sub" class="btn-micro-badge">0/3</span>
           </div>
         </button>
 
@@ -179,7 +176,6 @@
               <path d="M13 2.5L4 13.5h6.5L8.5 21.5l10.5-11h-6.5L14.5 2.5z"/>
             </svg>
             <span class="btn-title">SURGE</span>
-            <small class="btn-sub">DASH</small>
           </div>
         </button>
 
@@ -193,9 +189,26 @@
               <circle cx="5" cy="19" r="2.2" fill="currentColor"/>
             </svg>
             <span class="btn-title">STRIKE</span>
-            <small class="btn-sub">ATTACK</small>
           </div>
         </button>
+      </div>
+    </div>
+
+    <!-- Mobile Landscape Orientation Guard -->
+    <div id="orientation-guard" class="orientation-guard-overlay">
+      <div class="orientation-guard-box">
+        <div class="rotate-phone-anim">
+          <div class="rotate-phone-body">
+            <div class="rotate-phone-screen"></div>
+            <div class="rotate-phone-notch"></div>
+          </div>
+          <svg class="rotate-phone-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+          </svg>
+        </div>
+        <span class="rotate-tag">MICROSCOPIC BATTLESPACE</span>
+        <h2 class="rotate-title">ROTATE DEVICE</h2>
+        <p class="rotate-desc">IMMUNE is engineered for landscape orientation.<br>Please rotate your phone horizontally to play.</p>
       </div>
     </div>
 
