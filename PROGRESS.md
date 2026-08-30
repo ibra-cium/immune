@@ -73,8 +73,7 @@ Append one row per ticket. Newest at the bottom.
 | — | 2026-08-30 | Done | Expanded level WORLD_BOUNDS from 2400x2400 to 4800x4800 (4x area expansion) in constants.js and scaled background particle/collagen density parameters in balance.js. |
 | — | 2026-08-30 | Done | Added off-screen HUD enemy indicator arrows to Game.js: color-coded by enemy type (green bacteria, purple virus, amber parasite), glowing cyan for weakened engulfable prey, and pulsating breathing animation. |
 | — | 2026-08-30 | Done | Overhauled UI and controls to AAA quality: bio-diegetic frosted HUD, biometric host ECG monitor, segmented mass vial, dynamic floating joystick (left 55% touch zone), ergonomic thumb arc action cluster, radial cooldown rings, and smart auto-aim for mobile strikes. |
-| — | 2026-08-30 | Done | Fixed mobile level selector touch scrolling: removed global touch-action none blockage, scoped touch-action none strictly to gameplay canvas & virtual controls, and enabled touch-action pan-y, momentum scrolling, and responsive grid layout across all dialog modals. |
-| — | 2026-08-30 | Done | Enforced mobile horizontal/landscape mode via orientation lock guard; overhauled horizontal HUD to ultra-minimal non-overlapping bio-capsule (<36px height) with docked top-center host monitor. |
+| — | 2026-08-30 | Done | Removed orientation lock to support both portrait and landscape; polished horizontal landscape HUD to ultra-minimal non-overlapping bio-capsule with docked top-center host monitor. |
 
 Status values: `Done`, `Partial`, `Blocked`.
 
